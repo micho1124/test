@@ -23,7 +23,9 @@ class Comment(models.Model):
      message = models.CharField(u'メッセージ', max_length=200, blank=False)
      #登録日時
      pub_date = models.DateTimeField(u'登録日時', auto_now_add=True, editable=False)
+     
      class Meta:
         verbose_name = u'コメント'
      def __unicode__(self):
         return self.message
+

@@ -9,11 +9,24 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+import os
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+###
+BASE_PATH = os.path.abspath(os.path.split(__file__)[0])
+MEDIA_ROOT = os.path.join(BASE_PATH, 'images')
+MEDIA_URL = '/images_site/'
+ADMIN_MEDIA_PREFIX = '/images/'
+###
+
+
 DATABASES = {
     'default': {
-	'ENGINE': 'mysql', 
-	'NAME': 'DjangoTest', 
-        'USER': 'root',
+	#'ENGINE': 'mysql', 
+	'ENGINE': 'sqlite3', 
+	#'NAME': 'DjangoTest', 
+	'NAME': 'os.path.join(BASE_DIR, data.db)', 
+        #'USER
+        'USER': '',
 	'PASSWORD': '',
 	'HOST': '', 
 	'PORT': '',
@@ -27,6 +40,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
+
 TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
@@ -98,11 +112,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.csrf.CsrfResponseMiddleware',
 )
 
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -117,6 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'bbs',
+    'django.contrib.formtools',
 
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',

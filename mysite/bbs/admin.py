@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from bbs.models import Thread, Comment
+from mysite.bbs.models import Thread, Comment
 
 class CommentInline(admin.StackedInline):
 	model = Comment
